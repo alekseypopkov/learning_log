@@ -1,5 +1,10 @@
 ## Мы напишем веб-приложение «Журнал обучения»
 
+- Запустить локальный сервер, выполнив команду: 
+```bash
+python manage.py runserver
+```
+
 models.py
 from django.db import models
 
