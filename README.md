@@ -16,6 +16,7 @@ ref/models/fields. Возможно, вся эта информация вам �
 
 ```bash
 python manage.py makemigrations learning_logs
-
+```
+```bash
 python manage.py migrate
 ```
