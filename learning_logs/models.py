@@ -6,6 +6,10 @@ class Topic(models.Model):
     text = models.CharField(max_length=200)
     date_added = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        verbose_name = 'Темы'
+        verbose_name_plural = 'Темы'
+
     def __str__(self):
         """Возвращает строковое представление модели."""
         return self.text
@@ -18,8 +22,12 @@ class Entry(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name_plural = 'entries'
-
+        verbose_name = 'Записи'
+        verbose_name_plural = 'Записи'
+        
     def __str__(self):
         """Возвращает строковое представление модели."""
-        return f"{self.text[:50]}..."
+        if len(self.text) > 50:
+            return f"{self.text[:50]}..."
+        else:
+            return f"{self.text}"

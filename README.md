@@ -41,7 +41,28 @@ pip install django
 ```bash
 python manage.py runserver
 ```
+### Интерактивная оболочка Django
 
+- Введенные данные можно проанализировать на программном уровне в интерактив-
+ном терминальном сеансе. Эта интерактивная среда, называемая оболочкой (shell)
+Django, прекрасно подходит для тестирования и диагностики проекта. Вот пример
+сеанса, проходящего в интерактивной оболочке:
+(ll_env)learning_log$ python manage.py shell
+>>> from learning_logs.models import Topic
+>>> Topic.objects.all()
+<QuerySet [<Topic: Chess>, <Topic: Rock Climbing>]>
+Команда python manage.py shell (выполняемая в активной виртуальной среде)
+запускает интерпретатор Python, который может использоваться для работы с ин-
+формацией в базе данных проекта. В данном случае мы импортируем модель Topic
+из модуля learning_logs.models . Затем метод Topic.objects.all() используется
+для получения всех экземпляров модели Topic; возвращаемый список называется
+итоговым набором (queryset).
+
+- При каждом изменении модели необходимо перезапустить оболочку, чтобы увидеть
+результаты этих изменений. Чтобы завершить сеанс работы с оболочкой, нажмите
+сочетание клавиш Сtrl+D
+
+### Примечание
 models.py
 from django.db import models
 
@@ -62,3 +83,5 @@ python manage.py makemigrations learning_logs
 ```bash
 python manage.py migrate
 ```
+
+https://proproprogs.ru/django
