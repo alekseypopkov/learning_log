@@ -1,14 +1,40 @@
 ## Мы напишем веб-приложение «Журнал обучения»
 
+### Активация виртуальной среды
 - Создайте для проекта новый каталог learning_log, перейдите в этот каталог
 в терминальном режиме и создайте виртуальную среду, используя следующие
 команды:
+learning_log$ python -m venv ll_env
+learning_log$
+
 ```bash
 learning_log$ python -m venv ll_env
 ```
 
 ```bash
 source ll_env/bin/activate
+```
+
+Чтобы завершить использование виртуальной среды, введите команду deactivate:
+(ll_env)learning_log$ deactivate
+learning_log$
+
+```bash
+deactivate
+```
+
+### Установка Django
+
+- После того как вы создали свою виртуальную среду и активизировали ее, устано-
+вите Django с помощью инструмента pip:
+(ll_env)learning_log$ pip install --upgrade pip
+(ll_env)learning_log$ pip install django
+
+```bash
+pip install --upgrade pip
+```
+```bash
+pip install django
 ```
 
 - Запустить локальный сервер, выполнив команду: 
