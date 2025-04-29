@@ -1,17 +1,12 @@
-from django.http import HttpResponse
-from django.template import loader
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Topic
+from .forms import TopicForm
 
 # Create your views here.
 
 def index(request):
     """Главная страница приложения "Журнал обучения"."""
     return render(request, 'index.html')
-
-# def index(request):
-#   template = loader.get_template('index.html')
-#   return HttpResponse(template.render())
 
 def topics(request):
     """Выводит список тем."""
@@ -25,3 +20,19 @@ def topic(request, topic_id):
     entries = topic.entry_set.order_by('-date_added')
     context = {'topic': topic, 'entries': entries}
     return render(request, 'learning_logs/topic.html', context)
+
+def new_topic(request):
+    """Добавляет новую тему."""
+    if request.method != 'POST':
+        # Данные не отправлялись; создается пустая форма.
+        form = TopicForm()
+    else:
+        # Отправлены данные POST; обработать данные.
+        form = TopicForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('learning_logs:topics')
+
+    # Вывести пустую или недействительную форму.
+    context = {'form': form}
+    return render(request, 'learning_logs/new_topic.html', context)
