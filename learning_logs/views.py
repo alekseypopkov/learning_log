@@ -1,3 +1,5 @@
+from django.http import HttpResponse
+from django.template import loader
 from django.shortcuts import render
 from .models import Topic
 
@@ -5,7 +7,11 @@ from .models import Topic
 
 def index(request):
     """Главная страница приложения "Журнал обучения"."""
-    return render(request, 'learning_logs/index.html')
+    return render(request, 'index.html')
+
+# def index(request):
+#   template = loader.get_template('index.html')
+#   return HttpResponse(template.render())
 
 def topics(request):
     """Выводит список тем."""
